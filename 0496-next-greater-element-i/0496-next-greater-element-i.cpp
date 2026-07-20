@@ -1,38 +1,35 @@
 class Solution {
 public:
-    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) 
-    {
-        vector<int>v1;
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        unordered_map<int,int>um;
+        for(int i=0;i<nums2.size();i++)
+        {
+            um[nums2[i]]=i;
+        }
+
+        vector<int>ans(nums1.size(),-1);
 
         for(int i=0;i<nums1.size();i++)
         {
-            int a;
-            bool m=0;
-            for(int j=0;j<nums2.size();j++)
+            auto it  = um.find(nums1[i]);
+
+            if(it != um.end())
             {
-                if(nums1[i]==nums2[j])
+                int j = it->second;
+                int a= nums2[j];
+
+                for(int k=j+1;k<nums2.size();k++)
                 {
-                    for(int k=j+1;k<nums2.size();k++)
+                    if(nums2[k]>a)
                     {
-                        if(nums2[k]>nums1[i])
-                        {
-                            m=1;
-                            a=nums2[k];
-                            break;
-                        }
+                        ans[i]=nums2[k];
+                        break;
                     }
-                    break;
                 }
             }
-            if(!m)
-            {
-                a=-1;
-            }
-
-            v1.push_back(a);
         }
 
-        return v1;
-        
+        return ans;
+
     }
 };
