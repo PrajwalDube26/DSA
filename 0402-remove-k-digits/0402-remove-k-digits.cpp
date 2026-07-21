@@ -1,15 +1,5 @@
 class Solution {
 public:
-    string reverse(string & ans, int n)
-    {
-        for(int i=0;i<n/2;i++)
-        {
-            swap(ans[i],ans[n-1-i]);
-        }
-        return ans;
-    }
-
-
     string removeKdigits(string num, int k) {
         if(k>=num.length())
         {
@@ -43,28 +33,28 @@ public:
             s1.pop();
         }
 
-        string ansr = reverse(ans,ans.length());
+        reverse(ans.begin(), ans.end());
 
         int z=0;
-        if(ansr!="" && ansr[0]=='0')
+        if(ans!="" && ans[0]=='0')
         {
-            for(int i=0;i<ansr.size();i++)
+            for(int i=0;i<ans.size();i++)
             {
-                if(ansr[i]-'0' !=0)
+                if(ans[i]-'0' !=0)
                 {
                     break;
                 }
                 z++;
             }
 
-            for(int i=z;i<ansr.size();i++)
+            for(int i=z;i<ans.size();i++)
             {
-                ans2=ans2 + ansr[i];
+                ans2=ans2 + ans[i];
             }
         }
         else
         {
-            ans2=ansr;
+            ans2=ans;
         }
 
         if(ans2=="")
@@ -72,7 +62,5 @@ public:
             return "0";
         }
         return ans2;
-
-
     }
 };
