@@ -45,7 +45,7 @@ public:
             long long left = i - prev[i];
             long long right = next[i] - i;
 
-            ans = (ans + (1LL * arr[i] * left) * right);
+            ans = ans + (arr[i] * left * right);
         }
 
         return ans;
@@ -99,7 +99,7 @@ public:
             long long left = i - prev[i];
             long long right = next[i] - i;
 
-            ans = (ans + (1LL * arr[i] * left ) * right) ;
+            ans = ans + (arr[i] * left * right) ;
         }
 
         return ans;
