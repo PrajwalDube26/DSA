@@ -1,31 +1,24 @@
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-        queue<int>q1,q2;
-        vector<int>v1;
+        int n= nums.size();
+        vector<int>ans(n);
+        int p=0,ne=1;
 
-        for(int i=0;i<nums.size();i++)
+        for(int i=0;i<n;i++)
         {
             if(nums[i]>0)
             {
-                q1.push(nums[i]);
+                ans[p]=nums[i];
+                p+=2;
             }
             else if(nums[i]<0)
             {
-                q2.push(nums[i]);
+                ans[ne]=nums[i];
+                ne+=2;
             }
         }
 
-        while(!q1.empty() || !q2.empty())
-        {
-            if(!q1.empty())
-                v1.push_back(q1.front());q1.pop();
-
-            if(!q2.empty())
-                v1.push_back(q2.front());q2.pop();
-
-        }
-
-        return v1;
+        return ans;
     }
 };
