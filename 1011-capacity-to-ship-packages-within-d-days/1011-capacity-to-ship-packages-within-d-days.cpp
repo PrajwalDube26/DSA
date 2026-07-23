@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int required_day(vector<int>& weights, int mid, int n)
+    int required_day(vector<int>& weights, int& mid, int& n)
     {
         int a =mid;
         int ans=0;
@@ -27,7 +27,7 @@ public:
         return ans;
     }
 
-    pair<int,int> high_sum(vector<int>& weights, int n)
+    pair<int,int> high_sum(vector<int>& weights, int& n)
     {
         int maxa=INT_MIN;
         int sum=0;
