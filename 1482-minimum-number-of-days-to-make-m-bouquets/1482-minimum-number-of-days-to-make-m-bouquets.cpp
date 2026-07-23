@@ -38,8 +38,19 @@ public:
         return maxa;
     }
 
+    int find_low(vector<int>& bloomDay)
+    {
+        int mini=INT_MAX;
+        for(int i=0;i<bloomDay.size();i++)
+        {
+            mini=min(mini,bloomDay[i]);
+        }
+
+        return mini;
+    }
+
     int minDays(vector<int>& bloomDay, int m, int k) {
-        int low=1,high=find_high(bloomDay);
+        int low=find_low(bloomDay),high=find_high(bloomDay);
         int ans=-1;
         while(low<=high)
         {
