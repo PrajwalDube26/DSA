@@ -3,26 +3,16 @@ public:
     int number_of_bouquets(vector<int>& bloomDay, int day, int k)
     {
         int n=bloomDay.size();
-        vector<int>isbloom(n,0);
-
-        for(int i=0;i<n;i++)
-        {
-            if(bloomDay[i]<=day)
-            {
-                isbloom[i]=1;
-            }
-        }
-
         int count=0;
         int ans=0;
 
         for(int i=0;i<n;i++)
         {
-            if(isbloom[i]==1)
+            if(bloomDay[i]<=day)
             {
                 count++;
             }
-            else if(isbloom[i]==0)
+            else if(bloomDay[i] > day)
             {
                 count=0;
             }
