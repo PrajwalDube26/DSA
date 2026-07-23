@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int timereq(int mid,vector<int> piles)
+    int timereq(int mid,vector<int>& piles)
     {
         int ans=0;
         for(int i=0;i<piles.size();i++)
