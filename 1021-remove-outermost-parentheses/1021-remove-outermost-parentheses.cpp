@@ -8,17 +8,26 @@ public:
             if(s[i]=='(')
             {
                 balance++;
+                if(balance==1)
+                {
+                    continue;
+                }
             }
             else if(s[i]==')')
             {
                 balance--;
+                if(balance==0)
+                {
+                    continue;
+                }
             }
 
-            if(balance==0)
-            {
-                s1+=s.substr(start+1,i-start-1);
-                start=i+1;
-            }
+            s1=s1+s[i];
+            // if(balance==0)
+            // {
+            //     s1+=s.substr(start+1,i-start-1);
+            //     start=i+1;
+            // }
         }
 
         return s1;
