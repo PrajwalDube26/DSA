@@ -1,32 +1,26 @@
 class Solution {
 public:
-    string removeOuterParentheses(string s) 
-    {
-        int j=0;
-        int count=0;
+    string removeOuterParentheses(string s) {
+        int balance=0,start=0;
+        string s1="";
         for(int i=0;i<s.length();i++)
         {
             if(s[i]=='(')
             {
-                if(count!=0)
-                {
-                    s[j]=s[i];
-                    j++;
-                }
-                count++;
+                balance++;
             }
             else if(s[i]==')')
             {
-                count--;
-                if(count!=0)
-                {
-                    s[j]=s[i];
-                    j++;
-                }
+                balance--;
+            }
+
+            if(balance==0)
+            {
+                s1+=s.substr(start+1,i-start-1);
+                start=i+1;
             }
         }
 
-        s.resize(j);
-        return s;
+        return s1;
     }
 };
