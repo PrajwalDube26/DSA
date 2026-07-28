@@ -23,17 +23,14 @@ public:
             }
         }
 
-        for(int i=0;i<sizeof(A)/sizeof(A[0]);i++)
+        int ans=0;
+
+        for(int j=0;j<i;j++)
         {
-           for(int j=0;j<(sizeof(A)/sizeof(A[0]))-1;j++)
-           {
-               if(A[j]<A[j+1])
-               {
-                  swap(A[j],A[j+1]);
-               }
-           }
+            ans = max(ans,A[j]);
         }
-        return A[0];
+
+        return ans;
         
     }
 };
