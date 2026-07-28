@@ -7,7 +7,7 @@ public:
         {
             if(s[i]==goal[0])
             {
-                str2=s.substr(i,s.length());
+                str2=s.substr(i,s.length()-i+1);
                 str2+=str;
                 if(str2==goal)
                 {
