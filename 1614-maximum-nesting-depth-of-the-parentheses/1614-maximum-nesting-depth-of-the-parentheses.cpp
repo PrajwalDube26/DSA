@@ -7,7 +7,7 @@ public:
     int maxDepth(string s) 
     {
         int count=0,i=0;
-        char A[100];
+        int A[100];
 
         for(char c:s)
         {
