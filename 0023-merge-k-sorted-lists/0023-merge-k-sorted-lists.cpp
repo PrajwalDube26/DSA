@@ -16,7 +16,7 @@ public:
             return NULL;
         }
 
-        priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>>pq;
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
         vector<ListNode*>v1(lists.size());
 
         for(int i=0;i<lists.size();i++)
@@ -28,7 +28,7 @@ public:
         {
             if(v1[i]!=NULL)
             {
-                pq.push({lists[i]->val,{i,0}});
+                pq.push({lists[i]->val,i});
                 v1[i] = lists[i]->next;
             }
         }
@@ -39,16 +39,16 @@ public:
         }
 
         ListNode* ans, *travel;
-        pair<int,pair<int,int>> a =pq.top();
+        pair<int,int> a =pq.top();
 
         pq.pop();
         ans= new ListNode(a.first);
         travel=ans;
 
-        if(v1[a.second.first]!=NULL)
+        if(v1[a.second]!=NULL)
         {
-            pq.push({v1[a.second.first]->val,{a.second.first,(a.second.second)+1}});
-            v1[a.second.first] = v1[a.second.first] ->next;
+            pq.push({v1[a.second]->val,a.second});
+            v1[a.second] = v1[a.second] ->next;
         }
 
         while(!pq.empty())
@@ -58,10 +58,10 @@ public:
             travel->next=temp;
             travel = temp;
 
-            if(v1[a.second.first]!=NULL)
+            if(v1[a.second]!=NULL)
             {
-                pq.push({v1[a.second.first]->val,{a.second.first,(a.second.second)+1}});
-                v1[a.second.first] = v1[a.second.first] ->next;
+                pq.push({v1[a.second]->val,a.second});
+                v1[a.second] = v1[a.second] ->next;
             }
             pq.pop();
         }
