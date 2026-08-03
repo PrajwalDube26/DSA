@@ -12,6 +12,11 @@ public:
             {
                 v1.push_back(nums[i]);
             }
+
+            if(v1.size()==2)
+            {
+                break;
+            }
         }
 
         return v1;
