@@ -3,7 +3,7 @@ public:
     vector<int> findErrorNums(vector<int>& nums) {
         int n=nums.size();
         long long sn=1LL * (n*(n+1))/2;  //+ missing_number
-        long long s2n = (((1LL *n*(n+1))/2)*((2*n)+1))/3;
+        long long s2n = 1LL *(((1LL *n*(n+1))/2)*(1LL *(2*n)+1))/3;
         long long sa=0,s2a=0;      //+ reapeated_number
         vector<int>ans(2);
 
