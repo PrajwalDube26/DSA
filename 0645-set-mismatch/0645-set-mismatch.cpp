@@ -1,28 +1,26 @@
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
-        unordered_set<int>s1;
+        int n=nums.size();
+        long long sn=1LL * (n*(n+1))/2;  //+ missing_number
+        long long s2n = (((1LL *n*(n+1))/2)*((2*n)+1))/3;
+        long long sa=0,s2a=0;      //+ reapeated_number
         vector<int>ans(2);
-        int n = nums.size(),real_sum=0;
-        int excep_sum=(n*(n+1))/2;
-        int repeted;
 
         for(int i=0;i<n;i++)
         {
-            
-            if(s1.find(nums[i]) != s1.end())
-            {
-                repeted = nums[i];
-            }
-            else
-            {
-                s1.insert(nums[i]);
-                real_sum+=nums[i];
-            }   
+            sa +=nums[i];
+            s2a +=1LL * nums[i]*nums[i];
         }
 
-        ans[0]=repeted;
-        ans[1] = excep_sum - real_sum;
+        int val1 = sn-sa;
+        int val2 = (s2n - s2a)/(sn - sa);
+
+        int missing_number = (val1 + val2)/2;
+        int reapeated_number = (val2 - val1)/2;
+
+        ans[0]=reapeated_number;
+        ans[1]=missing_number;
 
         return ans;
     }
