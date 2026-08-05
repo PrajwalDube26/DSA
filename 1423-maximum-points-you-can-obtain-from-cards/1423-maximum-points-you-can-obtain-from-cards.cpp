@@ -2,8 +2,8 @@ class Solution {
 public:
     int maxScore(vector<int>& cardPoints, int k) 
     {
-        // int n=cardPoints.size();
-        int left=k-1,right=cardPoints.size()-1;
+        int n=cardPoints.size();
+        int left=k-1,right=n-1;
         int sum=0,ans=0;
 
         for(int i=0;i<k;i++)
