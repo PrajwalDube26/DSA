@@ -19,7 +19,7 @@ public:
         int n=s.length();
         int ans=0;
 
-        while(1)
+        while(right < n)
         {
             bool is_all_taken = isalltaken(counta,countb,countc);
 
