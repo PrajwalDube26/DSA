@@ -4,13 +4,12 @@ public:
     {
         int n=arr.size();
         int left=0,right=n-1,k1=k;
-        int mid,miss_in_left;
 
         while(right>=left)
         {
-            mid = ((right-left)/2) + left;
+            int mid = ((right-left)/2) + left;
 
-            miss_in_left = arr[mid] - (mid+1);
+            int miss_in_left = arr[mid] - (mid+1);
 
             if(miss_in_left>=k)
             {
@@ -25,7 +24,7 @@ public:
         {
             return k;
         }
-        
+
         int miss_before_right = arr[right] - (right+1);
         return arr[right] + (k - miss_before_right);
 
