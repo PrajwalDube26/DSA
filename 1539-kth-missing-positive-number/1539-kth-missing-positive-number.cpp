@@ -12,11 +12,7 @@ public:
 
             miss_in_left = arr[mid] - (mid+1);
 
-            if(miss_in_left==k)
-            {
-                break;
-            }
-            else if(miss_in_left>k)
+            if(miss_in_left>=k)
             {
                 right = mid-1;
             }
@@ -25,78 +21,85 @@ public:
                 left  = mid+1;
             }
         }
-
-        int ans;
-
-        if(miss_in_left>=k)
+        if(right==-1)
         {
-            int move_left = miss_in_left -k +1;
-            ans = arr[mid];
-
-            for(int i=0;i<move_left ; i++)
-            {
-                if(mid-1 == -1)
-                {
-                    return ans - move_left +i;
-                }
-                else
-                {
-                    if(arr[mid-1] != ans-1)
-                    {
-                        ans--;
-                    }
-                    else
-                    {
-                        while(arr[mid-1] == ans-1)
-                        {
-                            mid--;
-                            ans--;
-
-                            if(mid-1 == -1)
-                            {
-                                return ans - move_left +i;
-                            }
-                        }
-                        ans--;
-                    }
-                }
-            }
+            return k;
         }
-        else if(miss_in_left < k)
-        {
-            int move_right = k-miss_in_left;
-            ans = arr[mid];
+        
+        int miss_before_right = arr[right] - (right+1);
+        return arr[right] + (k - miss_before_right);
 
-            for(int i=0;i<move_right ; i++)
-            {
-                if(mid+1 == n)
-                {
-                    return ans + move_right -i;
-                }
-                else
-                {
-                    if(arr[mid+1] != ans+1)
-                    {
-                        ans++;
-                    }
-                    else
-                    {
-                        while(arr[mid+1] == ans+1)
-                        {
-                            mid++;
-                            ans++;
+        // int ans;
 
-                            if(mid+1 == n)
-                            {
-                                return ans + move_right -i;
-                            }
-                        }
-                        ans++;
-                    }
-                }
-            }
-        }
+        // if(miss_in_left>=k)
+        // {
+        //     int move_left = miss_in_left -k +1;
+        //     ans = arr[mid];
 
-        return ans;
+        //     for(int i=0;i<move_left ; i++)
+        //     {
+        //         if(mid-1 == -1)
+        //         {
+        //             return ans - move_left +i;
+        //         }
+        //         else
+        //         {
+        //             if(arr[mid-1] != ans-1)
+        //             {
+        //                 ans--;
+        //             }
+        //             else
+        //             {
+        //                 while(arr[mid-1] == ans-1)
+        //                 {
+        //                     mid--;
+        //                     ans--;
+
+        //                     if(mid-1 == -1)
+        //                     {
+        //                         return ans - move_left +i;
+        //                     }
+        //                 }
+        //                 ans--;
+        //             }
+        //         }
+        //     }
+        // }
+        // else if(miss_in_left < k)
+        // {
+        //     int move_right = k-miss_in_left;
+        //     ans = arr[mid];
+
+        //     for(int i=0;i<move_right ; i++)
+        //     {
+        //         if(mid+1 == n)
+        //         {
+        //             return ans + move_right -i;
+        //         }
+        //         else
+        //         {
+        //             if(arr[mid+1] != ans+1)
+        //             {
+        //                 ans++;
+        //             }
+        //             else
+        //             {
+        //                 while(arr[mid+1] == ans+1)
+        //                 {
+        //                     mid++;
+        //                     ans++;
+
+        //                     if(mid+1 == n)
+        //                     {
+        //                         return ans + move_right -i;
+        //                     }
+        //                 }
+        //                 ans++;
+        //             }
+        //         }
+        //     }
+        // }
+
+        // return ans;
     }
 };
