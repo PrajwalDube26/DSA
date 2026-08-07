@@ -11,62 +11,52 @@
  */
 class Solution {
 public:
-
-    void floor_recursive(TreeNode* root, int val,int & ans,TreeNode* & floor)
-    {
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        int ans=INT_MAX;
         TreeNode* temp = root;
+        TreeNode* ceil=NULL;
         
-        if(temp!=NULL)
+        while(temp!=NULL)
         {
             if(temp->val > val)
             {
-                floor_recursive(root->left,val,ans,floor);
+                if(temp->val < ans)
+                {
+                    ans = temp->val;
+                    ceil = temp;
+                }
+                temp =temp->left;
             }
             else if(temp->val < val)
             {
-                if(temp->val > ans)
-                {
-                    ans=temp->val;
-                    floor=temp;
-                }
-                floor_recursive(root->right,val,ans,floor);
+                temp =temp->right;
             }
+            
         }
-        else
-        {
-            return;
-        }
-    }
-
-    TreeNode* insertIntoBST(TreeNode* root, int val) 
-    {
-        int ans=INT_MIN;
-        TreeNode* floor=NULL;
-
-        floor_recursive(root,val,ans,floor);
-        if(floor==NULL)
+        
+        if(ceil == NULL)
         {
             TreeNode* ans= new TreeNode(val);
-            ans->right = root;
-
+            ans->left = root;
             return ans;
         }
-        TreeNode* temp = floor->right;
-        floor->right = new TreeNode(val);
 
-        if(temp == NULL)
+        TreeNode* temp2 = ceil->left;
+        ceil->left = new TreeNode(val);
+        
+        if(temp2==NULL)
         {
             return root;
         }
-        else if(temp->val > val)
+        else if(temp2->val > val)
         {
-            floor->right->right = temp;
+            ceil->left->right = temp2;
         }
-        else if(temp->val < val)
+        else if(temp2->val < val)
         {
-            floor->right->left = temp;
+            ceil->left->left = temp2;
         }
-
+        
         return root;
     }
 };
