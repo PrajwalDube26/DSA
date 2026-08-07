@@ -26,7 +26,7 @@ public:
                 }
                 else
                 {
-                    insertIntoBST(root->right,val);
+                    insert(root->right,val);
                 }
                 
             }
@@ -39,7 +39,7 @@ public:
                 }
                 else
                 {
-                    insertIntoBST(root->left,val);
+                    insert(root->left,val);
                 }
             }
         }
@@ -51,7 +51,7 @@ public:
         {
             return new TreeNode(val);
         }
-        
+
         insert(root,val);
 
         return root;
