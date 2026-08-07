@@ -13,15 +13,13 @@ class Solution {
 public:
     void insert(TreeNode* root, int val) 
     {
-        TreeNode* temp=root;
-
-        if(temp!=NULL)
+        if(root!=NULL)
         {
-            if(temp->val < val)
+            if(root->val < val)
             {
-                if(temp->right == NULL)
+                if(root->right == NULL)
                 {
-                    temp->right = new TreeNode(val);
+                    root->right = new TreeNode(val);
                     return;
                 }
                 else
@@ -30,11 +28,11 @@ public:
                 }
                 
             }
-            else if(temp->val > val)
+            else if(root->val > val)
             {
-                if(temp->left == NULL)
+                if(root->left == NULL)
                 {
-                    temp->left = new TreeNode(val);
+                    root->left = new TreeNode(val);
                     return;
                 }
                 else
