@@ -11,50 +11,24 @@
  */
 class Solution {
 public:
-    vector<int> rightSideView(TreeNode* root) 
+    void right_view_by_dfs(TreeNode* root,int level,vector<int>& ans)
     {
-        if(root==NULL)
+        if(root!=NULL)
         {
-            return {};
+            if(level == ans.size())
+            {
+                ans.push_back(root->val);
+            }
+            
+            right_view_by_dfs(root->right,level+1,ans);
+            right_view_by_dfs(root->left,level+1,ans);
         }
-        
-        unordered_map<int,int>m1;
-        queue<pair<TreeNode*,int>>q1;
-        q1.push({root,0});
+    }
+
+    vector<int> rightSideView(TreeNode* root)
+    {
         vector<int>ans;
-        int mx = 0;
-        
-        while(!q1.empty())
-        {
-            TreeNode* temp = q1.front().first;
-            int hr = q1.front().second;
-            q1.pop();
-            
-            mx = max(mx, hr);
-            
-            if(m1.find(hr)==m1.end())
-            {
-                m1[hr]=temp->val;
-            }
-
-            if(temp->right!=NULL)
-            {
-                q1.push({temp->right,hr+1});
-            }
-
-            if(temp->left!=NULL)
-            {
-                q1.push({temp->left,hr+1});
-            }
-            
-        }
-        
-        for(int i=0;i<=mx;i++)
-        {
-            ans.push_back(m1[i]);
-        }
-        
+        right_view_by_dfs(root,0,ans);
         return ans;
-        
     }
 };
