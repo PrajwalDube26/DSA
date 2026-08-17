@@ -16,8 +16,8 @@ public:
         int count=0;
         while(root!=NULL)
         {
-            root=root->left;
             count++;
+            root=root->left;
         }
         return count;
     }
@@ -27,8 +27,8 @@ public:
         int count=0;
         while(root!=NULL)
         {
-            root=root->right;
             count++;
+            root=root->right;
         }
         return count;
     }
