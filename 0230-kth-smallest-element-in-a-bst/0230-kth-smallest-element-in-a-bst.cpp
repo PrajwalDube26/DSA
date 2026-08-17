@@ -15,11 +15,11 @@ public:
     {
         if(root!=NULL)
         {
-            if(count==k)return;
+            if(count>=k)return;
 
             inorder(root->left,count,k,ans);
 
-            if(count==k)return;
+            if(count>=k)return;
             count++;
             if(count == k)
             {
