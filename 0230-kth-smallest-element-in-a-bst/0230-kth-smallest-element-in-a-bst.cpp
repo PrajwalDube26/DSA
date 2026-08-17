@@ -15,11 +15,16 @@ public:
     {
         if(root!=NULL)
         {
+            if(count==k)return;
+
             inorder(root->left,count,k,ans);
+
+            if(count==k)return;
             count++;
             if(count == k)
             {
                 ans=root->val;
+                return;
             }
             inorder(root->right,count,k,ans);
         }
