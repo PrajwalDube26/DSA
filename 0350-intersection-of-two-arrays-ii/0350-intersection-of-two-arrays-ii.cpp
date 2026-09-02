@@ -1,6 +1,9 @@
 class Solution {
 public:
-
+    // this is in nLog(n) time complexity
+    // for n^2 time complexity - apply 2 for loop and check every element
+    //  more optimization is possible is we apply - 2 pointer after sorting of both array
+    
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) 
     {
         sort(nums1.begin(),nums1.end());
